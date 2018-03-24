@@ -1,0 +1,49 @@
+---
+
+- name: Configure server.xml
+  become: true
+  template:
+    src: tomcat/server.xml.j2
+    dest: /etc/tomcat/server.xml
+    force: "yes"
+    owner: root
+    group: tomcat
+    mode: 0644
+  notify:
+    - Restart tomcat
+
+- name: Configure tomcat.conf
+  become: true
+  template:
+    src: tomcat/tomcat.conf.j2
+    dest: /etc/tomcat/tomcat.conf
+    force: "yes"
+    owner: root
+    group: tomcat
+    mode: 0644
+  notify:
+    - Restart tomcat
+
+- name: Configure tomcat-users.xml
+  become: true
+  template:
+    src: tomcat/tomcat-users.xml.j2
+    dest: /etc/tomcat/tomcat-users.xml
+    force: "yes"
+    owner: root
+    group: tomcat
+    mode: 0644
+  notify:
+    - Restart tomcat
+
+- name: Configure httpd/conf.d/proxy_ajp.conf
+  become: true
+  template:
+    src: httpd/conf.d/proxy_ajp.conf.j2
+    dest: /etc/httpd/conf.d/proxy_ajp.conf
+    force: "yes"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - Restart httpd

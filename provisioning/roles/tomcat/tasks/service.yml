@@ -1,0 +1,8 @@
+---
+
+- name: Enable tomcat service
+  become: true
+  service:
+    name: tomcat
+    enabled: "yes"
+    state: started

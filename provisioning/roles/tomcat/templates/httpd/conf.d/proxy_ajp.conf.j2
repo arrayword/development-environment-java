@@ -1,0 +1,7 @@
+<IfModule mod_proxy_ajp.c>
+    {% for map in tomcat_ajp_path_mappings %}
+    <Location {{ map.httpd_location}}>
+        ProxyPass ajp://localhost:8009{{ map.ajp_location }}
+    </Location>
+    {% endfor %}
+</IfModule>

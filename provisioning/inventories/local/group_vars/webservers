@@ -1,0 +1,16 @@
+---
+# VirtualBoxのバグ対策 （参考：　https://www.vagrantup.com/docs/synced-folders/virtualbox.html）
+httpd_enable_sendfile: "off"
+
+# バーチャルホスト設定（複数設定可能）
+httpd_vhosts:
+  - document_root: /var/lib/php/foo/public
+    server_name: foo.example.com
+
+# httpdからTomcatへのマッピング
+tomcat_ajp_path_mappings:
+  - httpd_location: /
+    ajp_location: /
+
+# Tomcatのデバッグモード
+tomcat_debug_mode: True

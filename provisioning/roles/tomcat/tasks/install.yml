@@ -1,0 +1,19 @@
+---
+
+- name: Install Tomcat
+  become: true
+  yum:
+    name:  tomcat
+    state: present
+
+- name: Install Tomcat webapps
+  become: true
+  yum:
+    name:  tomcat-webapps
+    state: present
+
+- name: Install Tomcat admin webapps
+  become: true
+  yum:
+    name:  tomcat-admin-webapps
+    state: present
